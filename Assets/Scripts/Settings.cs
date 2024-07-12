@@ -13,14 +13,12 @@ public class Settings : ScriptableObject
     public void ChangeLevel(int direction)
     {
         levelSelected += direction;
-        levelSelected %= levels.Length;
-        levelSelected = Mathf.Abs(levelSelected);
+        levelSelected = levelSelected > levels.Length - 1 ? 0 : levelSelected < 0 ? levels.Length - 1 : levelSelected;
     }
 
     public void ChangePlane(int direction)
     {
         planeSelected += direction;
-        planeSelected %= planes.Length;
-        planeSelected = Mathf.Abs(planeSelected);
+        planeSelected = planeSelected > planes.Length - 1 ? 0 : planeSelected < 0 ? planes.Length - 1 : planeSelected;
     }
 }
