@@ -2,12 +2,25 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    [SerializeField] Settings settings;
     [SerializeField] GameObject[] stars;
     [SerializeField] float speedScale;
+    [SerializeField] SpriteRenderer top;
+    [SerializeField] SpriteRenderer bottom;
+    Vector2 size;
+    float w;
+    void Awake()
+    {
+        Level level = settings.levels[settings.levelSelected];
+        top.sprite = level.top;
+        bottom.sprite = level.bottom;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-
+        size = top.bounds.size;
+        w = Camera.main.ScreenToWorldPoint(new(Screen.width, Screen.height)).x;
     }
 
     // Update is called once per frame
@@ -18,15 +31,14 @@ public class Obstacle : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position += GameManager.Instance.speed * speedScale * Time.fixedDeltaTime * Vector3.left;
-        if (transform.position.x < -4.5f * 2)
+        if (transform.position.x < -(w + size.x))
         {
             Vector3 pos = transform.position;
-            float worldWidth = Camera.main.ScreenToWorldPoint(new(Screen.width, 0)).x;
-            pos.x = worldWidth;
+            pos.x = w + size.x;
             pos.y = Random.Range(-.75f, .75f);
             transform.position = pos;
             stars[Random.Range(0, stars.Length)].SetActive(true);
         }
+        transform.position += settings.speed * speedScale * Time.fixedDeltaTime * Vector3.left;
     }
 }

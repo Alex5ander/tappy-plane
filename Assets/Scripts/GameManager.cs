@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] UnityEvent onStartGame;
     [SerializeField] UnityEvent onGameOver;
     [SerializeField] UnityEvent onAddScore;
-    public float speed;
     public int score;
+    public Settings settings;
     public static GameManager Instance;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        settings.speed = 4;
         onStartGame.Invoke();
     }
 
@@ -35,12 +36,13 @@ public class GameManager : MonoBehaviour
     {
         onGameOver.Invoke();
         Time.timeScale = 0;
+        settings.speed = 4;
     }
 
     public void AddScore(int score)
     {
         this.score += score;
-        speed += 0.25f;
+        settings.speed += 0.25f;
         onAddScore.Invoke();
     }
 

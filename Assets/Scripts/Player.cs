@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] Settings settings;
     [SerializeField] Texture2D active;
     [SerializeField] Texture2D hover;
-    [SerializeField] AnimatorOverrideController[] animatorOverrideController;
-    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Rigidbody2D body;
     [SerializeField] float impulse;
     Animator animator;
@@ -14,7 +13,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        animator.runtimeAnimatorController = animatorOverrideController[PlaneSelect.selected];
+        animator.runtimeAnimatorController = settings.planes[settings.planeSelected];
     }
 
     // Update is called once per frame

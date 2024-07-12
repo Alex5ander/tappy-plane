@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class PlaneSelect : MonoBehaviour
 {
+    [SerializeField] Settings settings;
     [SerializeField] Animator animator;
-    [SerializeField] AnimatorOverrideController[] animatorOverrideControllers;
-    public static int selected = 0;
     void Start()
     {
-        selected = selected < 0 ? animatorOverrideControllers.Length - 1 : selected;
-        animator.runtimeAnimatorController = animatorOverrideControllers[selected];
+        animator.runtimeAnimatorController = settings.previews[settings.planeSelected];
     }
 
     // Update is called once per frame
@@ -17,17 +15,9 @@ public class PlaneSelect : MonoBehaviour
 
     }
 
-    public void OnArrowLeftClick()
+    public void Change(int direction)
     {
-        selected -= 1;
-        selected = selected < 0 ? animatorOverrideControllers.Length - 1 : selected;
-        animator.runtimeAnimatorController = animatorOverrideControllers[selected];
-    }
-
-    public void OnArrowRightClick()
-    {
-        selected += 1;
-        selected = selected > animatorOverrideControllers.Length - 1 ? 0 : selected;
-        animator.runtimeAnimatorController = animatorOverrideControllers[selected];
+        settings.ChangePlane(direction);
+        animator.runtimeAnimatorController = settings.previews[settings.planeSelected];
     }
 }
