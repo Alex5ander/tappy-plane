@@ -1,0 +1,5 @@
+C:/Users/Cliente/Desktop/tappy-plane/.utmp/RelWithDebInfo/1e684810/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Cliente/Desktop/tappy-plane/.utmp/RelWithDebInfo/1e684810/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Users/Cliente/Desktop/tappy-plane/.utmp/RelWithDebInfo/1e684810/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/Cliente/Desktop/tappy-plane/.utmp/RelWithDebInfo/1e684810/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/Cliente/Desktop/tappy-plane/.utmp/RelWithDebInfo/1e684810/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir
