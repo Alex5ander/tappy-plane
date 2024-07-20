@@ -22,6 +22,7 @@ public class FirebaseSetup : MonoBehaviour
                 app = Firebase.FirebaseApp.DefaultInstance;
 
                 // Set a flag here to indicate whether Firebase is ready to use by your app.
+                Firebase.Analytics.FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
             }
             else
             {
