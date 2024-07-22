@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class PlaneSelect : MonoBehaviour
 {
-    [SerializeField] Settings settings;
     [SerializeField] Animator animator;
     void Start()
     {
-        animator.runtimeAnimatorController = settings.previews[settings.planeSelected];
+        animator.runtimeAnimatorController = GameManager.Instance.previews[GameManager.Instance.planeSelected];
     }
 
     // Update is called once per frame
@@ -17,7 +16,7 @@ public class PlaneSelect : MonoBehaviour
 
     public void Change(int direction)
     {
-        settings.ChangePlane(direction);
-        animator.runtimeAnimatorController = settings.previews[settings.planeSelected];
+        GameManager.Instance.ChangePlane(direction);
+        animator.runtimeAnimatorController = GameManager.Instance.previews[GameManager.Instance.planeSelected];
     }
 }

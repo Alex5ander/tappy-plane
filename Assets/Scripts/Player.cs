@@ -1,25 +1,27 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] Settings settings;
     [SerializeField] Texture2D active;
     [SerializeField] Texture2D hover;
     [SerializeField] Rigidbody2D body;
     [SerializeField] float impulse;
     Animator animator;
     bool applyForce = false;
+    [SerializeField] UnityEvent onAddScore;
+    [SerializeField] UnityEvent onGameOver;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        animator.runtimeAnimatorController = settings.planes[settings.planeSelected];
+        animator.runtimeAnimatorController = GameManager.Instance.planes[GameManager.Instance.planeSelected];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && body.velocity.y < 0)
+        if (Input.GetMouseButtonDown(0) && body.linearVelocity.y < 0)
         {
             Cursor.SetCursor(active, Vector2.zero, CursorMode.Auto);
             applyForce = true;
@@ -37,32 +39,38 @@ public class Player : MonoBehaviour
             body.AddForceY(impulse, ForceMode2D.Impulse);
             applyForce = false;
         }
-        animator.SetFloat("speedY", body.velocity.y);
+        animator.SetFloat("speedY", body.linearVelocity.y);
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            GameManager.Instance.GameOver();
+            Time.timeScale = 0;
+            onGameOver.Invoke();
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        int score = 0;
         if (other.gameObject.name == "starBronze")
         {
-            GameManager.Instance.AddScore(1);
+            score = 1;
         }
         else if (other.gameObject.name == "starSilver")
         {
-            GameManager.Instance.AddScore(5);
+            score = 5;
         }
         else if (other.gameObject.name == "starGold")
         {
-            GameManager.Instance.AddScore(10);
+            score = 10;
         }
-
-        other.gameObject.SetActive(false);
+        if (score != 0)
+        {
+            GameManager.Instance.AddScore(score);
+            onAddScore.Invoke();
+            other.gameObject.SetActive(false);
+        }
     }
 }

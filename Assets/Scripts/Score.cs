@@ -9,7 +9,7 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        UpdateScore();
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class Score : MonoBehaviour
 
     }
 
-    public void AddScore()
+    public void UpdateScore()
     {
         char[] chars = GameManager.Instance.score.ToString().ToCharArray();
         Array.Reverse(chars);

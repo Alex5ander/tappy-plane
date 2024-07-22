@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "40252561097",
+    "project_id": "games-c3cf6",
+    "storage_bucket": "games-c3cf6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40252561097:android:c98c6091179eff76f49f18",
+        "android_client_info": {
+          "package_name": "com.tappyplane.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr7oRoqHbNHlTSHWRGZN6hEpswp4etias"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

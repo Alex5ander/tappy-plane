@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    [SerializeField] Settings settings;
     [SerializeField] float speedScale;
     [SerializeField] SpriteRenderer sprite;
     Vector2 size;
@@ -24,6 +23,6 @@ public class Parallax : MonoBehaviour
         {
             transform.position = new(0, transform.position.y);
         }
-        transform.position += settings.speed * speedScale * Time.fixedDeltaTime * Vector3.left;
+        transform.position += GameManager.Instance.speed * speedScale * Time.fixedDeltaTime * Vector3.left;
     }
 }

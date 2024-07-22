@@ -4,20 +4,26 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] UnityEvent onStartGame;
-    [SerializeField] UnityEvent onGameOver;
-    [SerializeField] UnityEvent onAddScore;
+    public RuntimeAnimatorController[] planes;
+    public RuntimeAnimatorController[] previews;
+    public Level[] levels;
+    public float speed;
+    public int planeSelected = 0;
+    public int levelSelected = 0;
     public int score;
-    public Settings settings;
     public static GameManager Instance;
     // Start is called before the first frame update
     void Start()
     {
-        if (Instance)
+        if (Instance == null)
         {
-            Destroy(Instance);
+            Instance = this;
+            DontDestroyOnLoad(this);
         }
-        Instance = this;
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -26,29 +32,29 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void StartGame()
-    {
-        settings.speed = 4;
-        onStartGame.Invoke();
-    }
-
-    public void GameOver()
-    {
-        onGameOver.Invoke();
-        Time.timeScale = 0;
-        settings.speed = 4;
-    }
-
     public void AddScore(int score)
     {
         this.score += score;
-        settings.speed += 0.25f;
-        onAddScore.Invoke();
+        speed += 0.25f;
     }
 
     public void Close()
     {
-        SceneManager.LoadScene(0);
         Time.timeScale = 1;
+        score = 0;
+        speed = 5;
+        SceneManager.LoadScene(0);
+    }
+
+    public void ChangeLevel(int direction)
+    {
+        levelSelected += direction;
+        levelSelected = levelSelected > levels.Length - 1 ? 0 : levelSelected < 0 ? levels.Length - 1 : levelSelected;
+    }
+
+    public void ChangePlane(int direction)
+    {
+        planeSelected += direction;
+        planeSelected = planeSelected > planes.Length - 1 ? 0 : planeSelected < 0 ? planes.Length - 1 : planeSelected;
     }
 }

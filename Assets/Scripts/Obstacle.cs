@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] Settings settings;
     [SerializeField] GameObject[] stars;
     [SerializeField] float speedScale;
     [SerializeField] SpriteRenderer top;
@@ -11,7 +10,7 @@ public class Obstacle : MonoBehaviour
     float w;
     void Awake()
     {
-        Level level = settings.levels[settings.levelSelected];
+        Level level = GameManager.Instance.levels[GameManager.Instance.levelSelected];
         top.sprite = level.top;
         bottom.sprite = level.bottom;
     }
@@ -39,6 +38,6 @@ public class Obstacle : MonoBehaviour
             transform.position = pos;
             stars[Random.Range(0, stars.Length)].SetActive(true);
         }
-        transform.position += settings.speed * speedScale * Time.fixedDeltaTime * Vector3.left;
+        transform.position += GameManager.Instance.speed * speedScale * Time.fixedDeltaTime * Vector3.left;
     }
 }

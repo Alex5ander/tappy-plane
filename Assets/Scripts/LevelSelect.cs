@@ -12,12 +12,11 @@ public class Level
 
 public class LevelSelect : MonoBehaviour
 {
-    [SerializeField] Settings settings;
     [SerializeField] SpriteRenderer ground;
     // Start is called before the first frame update
     void Start()
     {
-        ground.sprite = settings.levels[settings.levelSelected].ground;
+        ground.sprite = GameManager.Instance.levels[GameManager.Instance.levelSelected].ground;
     }
 
     // Update is called once per frame
@@ -28,7 +27,7 @@ public class LevelSelect : MonoBehaviour
 
     public void Change(int direction)
     {
-        settings.ChangeLevel(direction);
-        ground.sprite = settings.levels[settings.levelSelected].ground;
+        GameManager.Instance.ChangeLevel(direction);
+        ground.sprite = GameManager.Instance.levels[GameManager.Instance.levelSelected].ground;
     }
 }
