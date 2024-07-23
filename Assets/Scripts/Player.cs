@@ -23,12 +23,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && body.linearVelocity.y < 0)
         {
-            Cursor.SetCursor(active, Vector2.zero, CursorMode.Auto);
             applyForce = true;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            Cursor.SetCursor(hover, Vector2.zero, CursorMode.Auto);
         }
     }
 

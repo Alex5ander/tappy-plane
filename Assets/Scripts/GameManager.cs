@@ -1,9 +1,10 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] Texture2D cursorActive;
+    [SerializeField] Texture2D cursorInactive;
     public RuntimeAnimatorController[] planes;
     public RuntimeAnimatorController[] previews;
     public Level[] levels;
@@ -29,7 +30,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            Cursor.SetCursor(cursorActive, Vector2.zero, CursorMode.Auto);
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            Cursor.SetCursor(cursorInactive, Vector2.zero, CursorMode.Auto);
+        }
     }
 
     public void AddScore(int score)
@@ -56,5 +64,10 @@ public class GameManager : MonoBehaviour
     {
         planeSelected += direction;
         planeSelected = planeSelected > planes.Length - 1 ? 0 : planeSelected < 0 ? planes.Length - 1 : planeSelected;
+    }
+
+    public void Play()
+    {
+        SceneManager.LoadScene(1);
     }
 }

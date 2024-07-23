@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 281722712}
   - component: {fileID: 281722713}
   m_Layer: 0
-  m_Name: Button
+  m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -699,7 +699,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 556.1798, y: -429.00003}
+  m_AnchoredPosition: {x: 426.96884, y: -429.00003}
   m_SizeDelta: {x: 196, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281722709
@@ -748,7 +748,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 281722713}
         m_TargetAssemblyTypeName: CloseButton, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1018,7 +1018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 556.1798, y: -56.333336}
+  m_AnchoredPosition: {x: 426.96884, y: -56.333336}
   m_SizeDelta: {x: 412, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &477019537
@@ -1224,7 +1224,7 @@ Canvas:
   m_GameObject: {fileID: 528829939}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 3474444}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1233,7 +1233,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 5
@@ -9407,7 +9407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 556.1798, y: -244.66669}
+  m_AnchoredPosition: {x: 426.96884, y: -244.66669}
   m_SizeDelta: {x: 264, y: 264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062602753
